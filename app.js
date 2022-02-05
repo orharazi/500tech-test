@@ -17,9 +17,11 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '/frontend/build')));
 
-app.use('/', indexRouter);
+app.get('/', function (req,res) {
+  res.sendFile(__dirname + "/frontend/build/index.html");
+});
 app.use('/api/math', mathRouter);
 
 // catch 404 and forward to error handler
