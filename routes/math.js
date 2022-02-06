@@ -18,15 +18,15 @@ router.get('/:action', function(req, res, next) {
 
     //check if the numbers are in query
     if (firstNumber, secondNumber) {
-      firstNumber = parseInt(firstNumber)
-      secondNumber = parseInt(secondNumber)
+      firstNumber = Number(firstNumber)
+      secondNumber = Number(secondNumber)
 
       //check if parameters are numbers
       if (!isNaN(firstNumber) && !isNaN(secondNumber)) {
 
         //calc from the bank with the right func
-        let calcNum = Number(actions[action](firstNumber, secondNumber))
-			let calc = Number(calcNum.toFix(2))
+        let calcNotFixed = Number(actions[action](firstNumber, secondNumber))
+        let calc = Number(calcNotFixed.toFixed(2))
 
         //returning json with {calc: num}
         res.json({calc});

@@ -11,7 +11,13 @@ function App() {
 
   //API call that changes calc
   useEffect(() => {
-    if (!isNaN(firstNumber) && !isNaN(secondNumber) && selectedOperator) {
+    if (
+      !isNaN(firstNumber) && 
+      !isNaN(secondNumber) &&
+      firstNumber  !== "" && 
+      secondNumber !== "" &&
+      selectedOperator
+      ) {
       const getToAPI = async () => {
         let neCalc = await fetch(`/api/math/${operators[selectedOperator]}?firstNumber=${firstNumber}&secondNumber=${secondNumber}`, {
           method: 'GET'
