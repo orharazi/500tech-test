@@ -23,22 +23,21 @@ router.get('/:action', function(req, res, next) {
 
       //check if parameters are numbers
       if (!isNaN(firstNumber) && !isNaN(secondNumber)) {
-        console.log({firstNumber, secondNumber})
-        console.log(actions[action](firstNumber, secondNumber))
 
         //calc from the bank with the right func
-        let calc = actions[action](firstNumber, secondNumber)
+        let calcNum = Number(actions[action](firstNumber, secondNumber))
+			let calc = Number(calcNum.toFix(2))
 
         //returning json with {calc: num}
         res.json({calc});
       } else {
-        res.status(400).send("not valide numbers!")
+        res.status(400).send("Invalide numbers!")
       }
      } else {
-      res.status(400).send("not valide parameters!, please use 'firstNumber' and 'secondNumber' paramters")
+      res.status(400).send("Invalide parameters!, please use 'firstNumber' and 'secondNumber' paramters")
      }
   } catch {
-    res.status(400).send("not valide paramers, please follow README");
+    res.status(400).send("Invalide paramers, please follow README");
   }
 
 });

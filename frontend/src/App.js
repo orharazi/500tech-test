@@ -7,7 +7,7 @@ function App() {
   const [selectedOperator, setSelectedOperator] = useState(null)
   const [firstNumber, setFirstNumber] = useState()
   const [secondNumber, setSecondNumber] = useState()
-  const [calcFromApi, setCalcFromApi] = useState(null)
+  const [calcFromApi, setCalcFromApi] = useState(" Enter parameters!")
 
   //API call that changes calc
   useEffect(() => {
@@ -40,7 +40,7 @@ function App() {
           )
         })}
         <input type="number" className='numberInput' onChange={e => setSecondNumber(e.target.value)} />
-         = {calcFromApi}
+         = {calcFromApi !== null ? calcFromApi : "Please enter a valid parameters, DONT DIVIDE BY ZIRO"}
         </div>
       </header>
     </div>
